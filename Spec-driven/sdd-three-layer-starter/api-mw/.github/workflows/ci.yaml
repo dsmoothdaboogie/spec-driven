@@ -1,0 +1,21 @@
+name: api-mw-ci
+on: [pull_request, push]
+jobs:
+  spec-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - name: Enforce spec/plan updates
+        run: bash scripts/spec_diff_check.sh origin/main
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: npm ci || npm install
+      - run: npm run contract:lint
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test

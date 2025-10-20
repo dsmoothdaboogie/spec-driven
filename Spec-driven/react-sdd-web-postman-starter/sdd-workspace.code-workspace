@@ -1,0 +1,19 @@
+{
+  "folders": [
+    {
+      "path": "product-specs"
+    },
+    {
+      "path": "api-mw"
+    },
+    {
+      "path": "ui-app"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/dist": true
+    }
+  }
+}

@@ -1,0 +1,21 @@
+name: product-specs-ci
+on: [pull_request, push]
+jobs:
+  spec-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - name: Enforce plan/lineage updates
+        run: bash scripts/spec_diff_check.sh origin/main
+  validate-openapi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lint OpenAPI (placeholder)
+        run: |
+          if ! grep -R "openapi:" -n specs; then
+            echo "No OpenAPI files found"
+          else
+            echo "OpenAPI files present"
+          fi

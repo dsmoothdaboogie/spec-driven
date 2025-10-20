@@ -1,0 +1,9 @@
+{
+  "name": "@org/contracts",
+  "version": "0.0.1",
+  "private": false,
+  "description": "Authoritative contracts published from product-specs",
+  "type": "module",
+  "files": ["specs/**/contracts/*.yaml", "README.md"],
+  "license": "UNLICENSED"
+}
